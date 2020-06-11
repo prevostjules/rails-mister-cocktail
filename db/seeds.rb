@@ -38,26 +38,53 @@ ingredients.each do |ingredient|
     new_ingredient.save!
   end
 
-mary = Cocktail.new(name: "Bloody Mary")
-mary.save!
-gr = Dose.new(description: "3 grammes")
-gr.ingredient = a
-gr.cocktail = mary
-gr.save!
+("a".."t").each do |letter|
+  url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=#{letter}"
+  user_serialized = open(url).read
+  user = JSON.parse(user_serialized)
+  drinks = user["drinks"]
 
-henry = Cocktail.new(name: "Bloody Henry")
-henry.save!
-feuilles = Dose.new(description: "3 feuilles")
-feuilles.ingredient = b
-feuilles.cocktail = henry
-feuilles.save!
+  drinks.each do |drink|
+    name = drink["strDrink"]
+    img_url = drink["strDrinkThumb"]
+    i = 1
+    str_ingredient = "strIngredient#{i}"
+    str_measure = "strMeasure#{i}"
+    ingredients = []
+    measures = []
+    until drink[str_ingredient].nil?
+      ingredient = drink[str_ingredient]
+      ingredients << ingredient
+      measure = drink[str_measure]
+      measures << measure
+      i += 1
+      str_ingredient = "strIngredient#{i}"
+      str_measure = "strMeasure#{i}"
+    end
+    cocktail = Cocktail.new(name: name, img_url: img_url)
+      j = 0
+      ingredients.each do |ingredient|
+        dose = Dose.new(description: measures[j])
+        if dose.description.nil?
+        else
+          ingredient_exist = Ingredient.where(name: ingredient)[0]
+          if ingredient_exist.nil?
+            j += 1
+          else
+            dose.ingredient = ingredient_exist
+            dose.cocktail = cocktail
+            if dose.valid?
+              dose.save!
+              j += 1
+            else
+              j += 1
+            end
 
-george = Cocktail.create(name: "Bloody George")
-george.save!
-pounds = Dose.new(description: "3 pounds")
-pounds.ingredient = b
-pounds.cocktail = george
-pounds.save!
+          end
+        end
+      end
+  end
+end
 
 
 puts "Finished"
