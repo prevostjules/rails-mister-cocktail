@@ -1,0 +1,6 @@
+<h1>Nos <%= Cocktail.count %> super cocktails</h1>
+
+<% @cocktails.each do |cocktail| %>
+  <h2><%= cocktail.name %></h2>
+<% end %>
+
