@@ -5,7 +5,7 @@
 
   <div class="row d-flex justify-content-around">
     <% @cocktails.each do |cocktail| %>
-      <div class="col-4 card-product">
+      <div class="col-sm-3 col-md-4 card-product">
         <% if cocktail.img_url.nil? %>
           <%= cl_image_tag cocktail.photo.key, width: 120, height: 120, crop: :fill %>
         <% else %>
