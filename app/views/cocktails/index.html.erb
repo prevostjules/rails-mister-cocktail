@@ -1,6 +1,12 @@
 <h1>Nos <%= Cocktail.count %> super cocktails</h1>
 
+<%= link_to "Add a cocktail", new_cocktail_path %>
+
 <% @cocktails.each do |cocktail| %>
+  <%= image_tag cocktail.img_url, alt: cocktail.name %>
   <h2><%= cocktail.name %></h2>
+  <%= link_to "Plus d'infos", cocktail_path(cocktail) %>
 <% end %>
+
+
 
