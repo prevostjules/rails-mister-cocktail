@@ -1,4 +1,11 @@
 <h1><%= @cocktail.name %></h1>
+
+<% if @cocktail.photo.attached? %>
+  <%= cl_image_tag cocktail.photo.key, width: 1600, height: 900, crop: :fill %>
+<% else %>
+  <%= image_tag "https://source.unsplash.com/1600x900/?#{@cocktail.name}", alt: @cocktail.name %>
+<% end %>
+
 <ul>
   <% @cocktail.doses.each do |dose| %>
     <li><%= dose.description %> <%= dose.ingredient.name %></li>
@@ -10,6 +17,6 @@
 </ul>
 
 <%= link_to "Add a dose", new_cocktail_dose_path(@cocktail) %>
-<%= link_to "Back to index", cocktails_path %>
+<%= link_to "Back to index", root_path %>
 
 

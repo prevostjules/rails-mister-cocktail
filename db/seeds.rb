@@ -22,13 +22,6 @@ Dose.destroy_all
 
 puts "Create ingredients"
 
-a = Ingredient.new(name: "lemon")
-a.save!
-b = Ingredient.new(name: "ice")
-b.save!
-c = Ingredient.new(name: "mint leaves")
-c.save!
-
 url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
 user_serialized = open(url).read
 user = JSON.parse(user_serialized)

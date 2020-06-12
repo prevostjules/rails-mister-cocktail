@@ -1,12 +1,22 @@
-<h1>Nos <%= Cocktail.count %> super cocktails</h1>
+<%= render "banner" %>
+<div class="container text-center home">
 
-<%= link_to "Add a cocktail", new_cocktail_path %>
+  <h1>Choisissez parmis nos <%= Cocktail.count %> super cocktails</h1>
 
-<% @cocktails.each do |cocktail| %>
-  <%= image_tag cocktail.img_url, alt: cocktail.name %>
-  <h2><%= cocktail.name %></h2>
-  <%= link_to "Plus d'infos", cocktail_path(cocktail) %>
-<% end %>
+  <div class="row d-flex justify-content-around">
+    <% @cocktails.each do |cocktail| %>
+      <div class="col-4 card-product">
+        <% if cocktail.img_url.nil? %>
+          <%= cl_image_tag cocktail.photo.key, width: 120, height: 120, crop: :fill %>
+        <% else %>
+          <%= image_tag cocktail.img_url, alt: cocktail.name %>
+        <% end %>
+        <div class="card-product-infos">
+          <h2><%= cocktail.name %></h2>
+          <%= link_to "infos", cocktail_path(cocktail) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
-
-
+</div>
