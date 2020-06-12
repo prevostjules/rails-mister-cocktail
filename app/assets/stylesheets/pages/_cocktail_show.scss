@@ -1,0 +1,43 @@
+.cocktail-show__header {
+  display: flex;
+  flex-direction: column;
+    h1 {
+      font-size: 25px;
+      margin: 40px 0 40px 16px;
+    }
+
+    img {
+      margin: auto;
+    }
+}
+
+.cocktail-show__ingredients {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px $special-gray;
+  max-width: 50%;
+  padding: 16px;
+  border-radius: 25px;
+  margin: 20px 0;
+  h2 {
+    margin-bottom: 15px;
+  }
+  p {
+    margin-bottom: 2px;
+  }
+
+  a {
+    margin-bottom: 18px;
+
+  }
+}
+
+.cocktail-show__infos {
+  display:flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#btn-show {
+  margin-top: 60px;
+}

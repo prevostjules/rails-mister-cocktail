@@ -1,5 +1,15 @@
-<%= simple_form_for(@cocktail) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit %>
-<% end %>
+<div class="container d-flex justify-content-around align-items-center">
+  <div class="row test">
+    <div class="form col-12 d-flex flex-column align-items-center">
+      <h1>Your cocktail</h1>
+      <%= simple_form_for(@cocktail) do |f| %>
+        <%= f.input :name %>
+        <%= f.input :photo, as: :file %>
+        <%= f.submit class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="text-center">
+    <%= link_to "Back to index", root_path, class: "btn btn-primary", id:"btn-show" %>
+  </div>
+</div>
