@@ -17,6 +17,9 @@
   left: 50%;
   right: 50%;
   font-size: 2rem;
+  @include mobile-only{
+      display: none;
+    }
 }
 
 .banner-top {
