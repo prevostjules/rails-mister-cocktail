@@ -1,0 +1,5 @@
+meta_product_name: "The Best Coktails in the world!"
+meta_title: "The Best Coktails in the world! - No joke"
+meta_description: "Everything is in the title"
+meta_image: "best_cocktails.png" # should exist in `app/assets/images/`
+twitter_account: "@prevost_jules"   # required for Twitter Cards
