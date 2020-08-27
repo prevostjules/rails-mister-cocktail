@@ -7,7 +7,7 @@
   #   json.text 'ouech'
   # end
 
-texts = ["Le tout premier cockatil enregistré sur ce site a pour nom '#{@cocktails.first.name}.'", "Le dernier cockail a avoir été créé sur ce site a pour nom '#{@cocktails.last.name}.'"]
+texts = ["Le tout premier cocktail enregistré sur ce site a pour nom: '#{@cocktails.first.name}.'", "Le dernier cockail a avoir été créé sur ce site a pour nom: '#{@cocktails.last.name}.'"]
 
 json.messages do
   json.array! texts do |text|
